@@ -1,15 +1,15 @@
-.filtros {
+.filters {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
-.filtros label {
+.filters label {
   margin-bottom: 10px;
   font-size: 16px;
   font-weight: 500;
 }
 
-.filtros input[type="text"]{
+.filters input[type="text"]{
   flex-grow: 1;
   padding: 15px 20px; 
   border-radius: 3px;

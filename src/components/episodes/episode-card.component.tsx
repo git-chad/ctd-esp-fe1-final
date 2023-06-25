@@ -1,4 +1,4 @@
-import './tarjeta-episodio.css';
+import './episode-card.css';
 
 /**
  * Tarjeta para cada episodio dentro de la vista de personaje.
@@ -8,15 +8,15 @@ import './tarjeta-episodio.css';
  * 
  * @returns un JSX element 
  */
-const TarjetaEpisodio = () => {
+const EpisodeCard = () => {
 
-    return <div className="tarjeta-episodio">
+    return <div className="episode-card">
             <h4>Close Rick-counters of the Rick Kind</h4>
             <div>
                 <span>S01E01</span>
-                <span>Lanzado el: April 7, 2014</span>
+                <span>Launched: April 7, 2014</span>
             </div>
     </div>
 }
 
-export default TarjetaEpisodio;
+export default EpisodeCard;

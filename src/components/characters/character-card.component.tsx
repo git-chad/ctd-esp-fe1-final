@@ -1,5 +1,5 @@
-import BotonFavorito from '../botones/boton-favorito.componente';
-import './tarjeta-personaje.css';
+import FavButton from '../buttons/fav-button.component';
+import './character-card.css';
 
 /**
  * Tarjeta para cada personaje dentro de la grilla de personajes. 
@@ -11,11 +11,11 @@ import './tarjeta-personaje.css';
  */
 const TarjetaPersonaje = () => {
 
-    return <div className="tarjeta-personaje">
+    return <div className="character-card">
         <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick Sanchez"/>
-        <div className="tarjeta-personaje-body">
+        <div className="character-card-body">
             <span>Rick Sanchez</span>
-            <BotonFavorito esFavorito={false} />
+            <FavButton isFavorite={false} onClick={onclick}/>
         </div>
     </div>
 }

@@ -1,33 +1,33 @@
-.detalle {
+.details {
     display: flex;
     flex-direction: column;
 }
 
-.detalle-header {
+.details-header {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
 }
 
-.detalle-header-texto {
+.details-header-text {
     margin-left: 30px;
     font-size: 26px;
     font-weight: 500;
 
 }
 
-.detalle-header-texto p{
+.details-header-text p{
     margin-top: 0;
     margin-bottom: 10px;
 }
 
 
-.detalle-header-texto p:nth-child(1){
+.details-header-text p:nth-child(1){
     font-size: 32px;
 }
 
-.episodios-grilla {
+.episodes-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;

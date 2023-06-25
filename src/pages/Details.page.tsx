@@ -1,6 +1,6 @@
-import "./Detalle.css";
-import BotonFavorito from "../componentes/botones/boton-favorito.componente";
-import TarjetaEpisodio from "../componentes/episodios/tarjeta-episodio.componente";
+import "./Details.css";
+import FavButton from "../components/buttons/fav-button.component";
+import EpisodeCard from "../components/episodes/episode-card.component";
 
 /**
  * Esta es la pagina de detalle. Aqui se puede mostrar la vista sobre el personaje seleccionado junto con la lista de episodios en los que aparece
@@ -10,32 +10,34 @@ import TarjetaEpisodio from "../componentes/episodios/tarjeta-episodio.component
  * 
  * 
  * Uso: 
- * ``` <PaginaDetalle /> ```
+ * ``` <DetailsPage /> ```
  * 
  * @returns la pagina de detalle
  */
-const PaginaDetalle = () => {
+const DetailsPage = () => {
     return <div className="container">
         <h3>Rick Sanchez</h3>
-        <div className={"detalle"}>
-            <div className={"detalle-header"}>
+        <div className={"details"}>
+            <div className={"details-header"}>
                 <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick Sanchez"/>
-                <div className={"detalle-header-texto"}>
+                <div className={"details-header-text"}>
 
                     <p>Rick Sanchez</p>
                     <p>Planeta: Earth</p>
                     <p>Genero: Male</p>
                 </div>
-                <BotonFavorito esFavorito={false} />
+                <FavButton 
+                isFavorite={false}
+                onClick={() => {}} />
             </div>
         </div>
         <h4>Lista de episodios donde apareció el personaje</h4>
-        <div className={"episodios-grilla"}>
-            <TarjetaEpisodio />
-            <TarjetaEpisodio />
-            <TarjetaEpisodio />
+        <div className={"episodes-grid"}>
+            <EpisodeCard />
+            <EpisodeCard />
+            <EpisodeCard />
         </div>
     </div>
 }
 
-export default PaginaDetalle
+export default DetailsPage

@@ -1,21 +1,21 @@
-import GrillaPersonajes from "../componentes/personajes/grilla-personajes.componente";
+import CharacterGrid from "../components/characters/character-grid.component";
 
 /**
  * Esta es la pagina de favoritos. Aquí se deberan ver todos los personajes marcados como favoritos
  * 
  * Uso: 
- * ``` <PaginaFavoritos /> ```
+ * ``` <FavoritesPage /> ```
  * 
  * @returns la pagina de favoritos
  */
-const PaginaFavoritos = () => {
+const FavoritesPage = () => {
     return <div className="container">
         <div className="actions">
-            <h3>Personajes Favoritos</h3>
+            <h3>Favorite characters</h3>
             <button className="danger">Test Button</button>
         </div>
-        <GrillaPersonajes />
+        <CharacterGrid />
     </div>
 }
 
-export default PaginaFavoritos
+export default FavoritesPage 
