@@ -1,10 +1,5 @@
 import './fav-button.css';
 
-interface FavButtonProps {
-    isFavorite: boolean;
-    onClick: () => void;
-}
-
 /**
  * Boton que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
  * 
@@ -13,6 +8,13 @@ interface FavButtonProps {
  * 
  * @returns un JSX element 
  */
+
+interface FavButtonProps {
+    isFavorite: boolean;
+    onClick: () => void;
+}
+
+
 const BotonFavorito = ({isFavorite, onClick}: FavButtonProps) => {
     const src = isFavorite ? "img1" : "img2"
 

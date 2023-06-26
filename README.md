@@ -275,6 +275,7 @@ Cómo te mencionamos anteriormente, el proyecto cuenta con algunos componentes q
 
 Con Redux, TypeScript y Thunk (o Saga!) ya configurados, podes proceder al armado de las interfaces del modelo. Es decir, crear las interfaces de los objetos que vas a usar en el proyecto. 
 Para esto, te recomendamos que visualizas el diseño final, e identifiques los campos, variables y tipos que vas a necesitar en tus objetos para tiparlos correctamente. 
+((char grid, char card, episodes, button))
 No hace falta que sean perfectos en esta etapa, los podrás ajustar después, pero van a ser de gran ayuda para arrancar a trabajar! 
 
 ### Paso 5 - Creación del estado y el/los reducer
@@ -282,7 +283,8 @@ No hace falta que sean perfectos en esta etapa, los podrás ajustar después, pe
 Es importante poder abstraernos un poco de la creación de la UI, y del HTML, para pensar en que funcionalidades queremos construir. 
 En esta etapa podemos identificar los eventos que muestra aplicación debe gestionar y que valores deben ser almacenados en el estado. 
 Por ejemplo, vamos a necesitar almacenar los personajes que nos retorne la API, junto con el estado de la petición. 
-
+((home: fetch chars, fav chars, pagination. favs: fetch favs, delete favs,
+delete all favs. details: fetch char details, fetch episode appearances.))
 Nota: No olvides agregar tu o tus reducers a la store!
 
 ### Paso 6 - Armado de la UI 

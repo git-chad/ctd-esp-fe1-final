@@ -18,8 +18,8 @@ const Navbar = () => {
                 <nav>
                     <ul>
                         <li><Link to="/">Home</Link></li>
-                        <li><Link to="/favoritos">Favorites</Link></li>
-                        <li><Link to="/detalle">Details</Link></li>
+                        <li><Link to="/favorites">Favorites</Link></li>
+                        <li><Link to="/details">Details</Link></li>
                     </ul>
                 </nav>
             </div>

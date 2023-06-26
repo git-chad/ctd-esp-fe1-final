@@ -1,4 +1,6 @@
 import { configureStore} from "@reduxjs/toolkit";
+import characterReducer from "./characterReducer";
+
 
 // import reducers 
 
@@ -6,6 +8,8 @@ import { configureStore} from "@reduxjs/toolkit";
 const store = configureStore({
    reducer: {
     // put reducers here
+    characters: characterReducer,
+    
    }
 });
 

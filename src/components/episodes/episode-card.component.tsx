@@ -8,6 +8,11 @@ import './episode-card.css';
  * 
  * @returns un JSX element 
  */
+
+interface episodeCardProps {
+    episode: Episode;
+}
+
 const EpisodeCard = () => {
 
     return <div className="episode-card">

@@ -1,21 +1,23 @@
+import React from "react";
+import { useAppSelector } from "../store/hooks";
 import CharacterGrid from "../components/characters/character-grid.component";
 
 /**
- * Esta es la pagina de favoritos. Aquí se deberan ver todos los personajes marcados como favoritos
- * 
- * Uso: 
- * ``` <FavoritesPage /> ```
- * 
- * @returns la pagina de favoritos
+ * Página de favoritos. Aquí se mostrarán los personajes marcados como favoritos.
+ *
+ * @returns la página de favoritos
  */
-const FavoritesPage = () => {
-    return <div className="container">
-        <div className="actions">
-            <h3>Favorite characters</h3>
-            <button className="danger">Test Button</button>
-        </div>
-        <CharacterGrid />
-    </div>
-}
+const Favorites = () => {
+  const favoriteCharacters = useAppSelector(
+    (state) => state.favorites.favoriteCharacters
+  );
 
-export default FavoritesPage 
+  return (
+    <div>
+      <h1>Favorite Characters</h1>
+      <CharacterGrid characters={favoriteCharacters} />
+    </div>
+  );
+};
+
+export default Favorites;
