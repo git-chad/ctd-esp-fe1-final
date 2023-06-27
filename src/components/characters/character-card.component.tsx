@@ -2,48 +2,38 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import FavButton from "../buttons/fav-button.component";
 import "./character-card.css";
+import { fetchToggleFavorite } from "../../store/favoritesReducer";
 
-/**
- * Tarjeta para cada personaje dentro de la grilla de personajes.
- *
- * Deberás agregar las propiedades necesarias para mostrar los datos de los personajes
- *
- *
- * @returns un JSX element
- */
-
-interface characterCardProps {
+interface CharacterCardProps {
   character: Character;
 }
 
-const CharacterCard = ({ character }: characterCardProps) => {
+const CharacterCard = ({ character }: CharacterCardProps) => {
   const favoritesState = useAppSelector((state) => state.favorites);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const onClickFav = () => {
-    // must manage fav button func
-    console.log("added to favorites");
-    
-  }
+    dispatch(fetchToggleFavorite(character.id));
+  };
 
   const onClickCard = () => {
-    // must set character details later
-    navigate('/details');
+    navigate("/details");
     console.log("opened on details tab");
-    
-  }
+  };
+
+  const isFav =
+    Array.isArray(favoritesState.list) &&
+    favoritesState.list.includes(character.id);
+
+  console.log(character.name); // Log the name property to verify its value
 
   return (
     <div className="character-card">
-      <img
-        src={character.img}
-        alt={character.name}
-        onClick={onClickCard}
-      />
+      <img src={character.img} alt={character.name} onClick={onClickCard} />
       <div className="character-card-body">
         <span>{character.name}</span>
-        <FavButton isFavorite={false} onClick={onClickFav} />
+        <FavButton isFavorite={isFav} onClick={onClickFav} />
       </div>
     </div>
   );

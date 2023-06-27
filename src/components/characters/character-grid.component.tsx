@@ -17,9 +17,9 @@ interface CharacterGridProps {
 const CharacterGrid = ({ characters }: CharacterGridProps) => {
   return (
     <div className="character-grid">
-      {characters.map((character) => (
-        <CharacterCard key={character.id} character={character} />
-      ))}
+      {characters.map((character) => {
+        return <CharacterCard key={character.id} character={character} />;
+      })}
     </div>
   );
 };

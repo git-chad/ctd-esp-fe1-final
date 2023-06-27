@@ -16,8 +16,8 @@ const initialState: CharactersState = {
   characters: [],
   filter: "",
 };
-
-const fetchCharData = (charDataToMap: any) => {
+// maps data for cards from api
+export const fetchCharData = (charDataToMap: any) => {
   return charDataToMap.map((character: any) => ({
     id: character.id,
     name: character.name,
@@ -28,7 +28,7 @@ const fetchCharData = (charDataToMap: any) => {
     url: character.url,
   }));
 };
-
+// gets chars from current page (check api)
 const getCharactersPageDependent = async (url: string) => {
   const response = await fetch(url).then((response) => response.json());
   const data: CharactersState = {
@@ -39,19 +39,19 @@ const getCharactersPageDependent = async (url: string) => {
   };
   return data;
 };
-
+// filters chars on screen by name
 const getFilteredCharacters = async (filter: string) => {
   return getCharactersPageDependent(
     `https://rickandmortyapi.com/api/character/?name=${filter}&page=1`
   );
 };
-
+// gets chars first page
 const getCharacters = async () => {
   return getCharactersPageDependent(
     "https://rickandmortyapi.com/api/character?page=1"
   );
 };
-
+// fetch chars
 export const fetchCharacters = createAsyncThunk(
   "characters/fetchCharacters",
   async () => {
@@ -59,7 +59,7 @@ export const fetchCharacters = createAsyncThunk(
     return response;
   }
 );
-
+// fetch filtered chars by their names
 export const fetchFilteredCharacters = createAsyncThunk(
   "characters/fetchFilteredCharacters",
   async (filter: string) => {
@@ -67,7 +67,7 @@ export const fetchFilteredCharacters = createAsyncThunk(
     return response;
   }
 );
-
+// fetch previous char page
 export const fetchPreviousCharacters = createAsyncThunk(
   "characters/fetchPreviousCharacters",
   async (unused, { getState }) => {
@@ -81,7 +81,7 @@ export const fetchPreviousCharacters = createAsyncThunk(
     return response;
   }
 );
-
+// fetch next char page
 export const fetchNextCharacters = createAsyncThunk(
   "characters/fetchNextCharacters",
   async (unused, { getState }) => {
@@ -96,7 +96,7 @@ export const fetchNextCharacters = createAsyncThunk(
   }
 );
 
-// add the character slice for favorite chars here vvv
+// char slice
 
 const charactersSlice = createSlice({
   name: "characters",

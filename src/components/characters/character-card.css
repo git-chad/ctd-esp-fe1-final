@@ -24,3 +24,6 @@
   align-items: center;
 }
 
+.character-card-body span {
+  color: black; /* Set the desired text color */
+}

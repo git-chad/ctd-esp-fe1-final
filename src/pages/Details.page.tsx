@@ -16,7 +16,7 @@ import EpisodeCard from "../components/episodes/episode-card.component";
  */
 const DetailsPage = () => {
     return <div className="container">
-        <h3>Rick Sanchez</h3>
+        {/* <h3>Rick Sanchez</h3>
         <div className={"details"}>
             <div className={"details-header"}>
                 <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick Sanchez"/>
@@ -36,7 +36,7 @@ const DetailsPage = () => {
             <EpisodeCard />
             <EpisodeCard />
             <EpisodeCard />
-        </div>
+        </div> */}
     </div>
 }
 
