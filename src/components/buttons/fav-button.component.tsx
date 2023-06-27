@@ -1,4 +1,3 @@
-import './fav-button.css';
 import filledStar from '../../imgs/star-filled.png';
 import star from '../../imgs/star.png'
 
@@ -21,7 +20,7 @@ const FavButton = ({isFavorite, onClick}: FavButtonProps) => {
     const src = isFavorite ? filledStar : star;
 
     return <div onClick={onClick} className="fav-button">
-        <img src={src} alt={"favorite"} />
+        <img className="w-5 h-5 cursor-pointer" src={src} alt={"favorite"} />
     </div>
 }
 

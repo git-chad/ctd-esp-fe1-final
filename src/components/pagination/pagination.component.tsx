@@ -29,11 +29,11 @@ const Pagination = () => {
   };
 
   return (
-    <div className="pagination">
-      <button disabled={disablePrev} className={"primary"} onClick={handlePrev}>
+    <div className="pagination pb-4">
+      <button disabled={disablePrev} className={"primary hover:bg-blue-600 transition-colors"} onClick={handlePrev}>
         Previous
       </button>
-      <button disabled={disableNext} className={"primary"} onClick={handleNext}>
+      <button disabled={disableNext} className={"primary hover:bg-blue-600 transition-colors"} onClick={handleNext}>
         Next
       </button>
     </div>

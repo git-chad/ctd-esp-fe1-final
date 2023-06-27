@@ -21,7 +21,7 @@ const Filter = () => {
   };
 
   return (
-    <div className="filters">
+    <div className="filters pt-2 pb-2">
       <label htmlFor="name">Filter by character name:</label>
       <input
         onChange={onChange}

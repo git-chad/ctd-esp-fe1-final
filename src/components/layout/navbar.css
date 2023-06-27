@@ -13,8 +13,8 @@ header > div {
   align-items: center;
 }
 
-header > div h2{
-  margin: 0
+header > div h2 {
+  margin: 0;
 }
 
 header > div nav ul {
@@ -22,7 +22,6 @@ header > div nav ul {
   flex-direction: row;
   align-items: center;
 }
-
 
 header > div nav ul li {
   list-style: none;
@@ -39,4 +38,8 @@ header > div nav ul li a {
 
 header > div nav ul li a:hover {
   color: rgba(57, 146, 255, 1);
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }

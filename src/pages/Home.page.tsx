@@ -4,6 +4,7 @@ import CharacterGrid from "../components/characters/character-grid.component";
 import Pagination from "../components/pagination/pagination.component";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { fetchCharacters } from "../store/characterReducer";
+import { fetchResetFavorites } from "../store/favoritesReducer";
 
 /**
  * Esta es la pagina principal. Aquí se debera ver el panel de filtros junto con la grilla de personajes.
@@ -22,10 +23,10 @@ const Homepage = () => {
   }, [dispatch]);
 
   return (
-    <div className="container">
+    <div className="container-l">
       <div className="actions">
-        <h3>Catálogo de Personajes</h3>
-        <button className="danger">Test Button</button>
+        <h3 className="text-2xl font-bold">Character Catalog</h3>
+        <button className="danger hover:bg-red-700 transition-colors" onClick={() => dispatch(fetchResetFavorites())}>Remove all</button>
       </div>
       <Filters />
       <Pagination />

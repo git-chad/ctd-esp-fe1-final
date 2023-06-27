@@ -1,4 +1,4 @@
-.container {
+.container-l {
     max-width: 1280px;
     width: 100%;
     margin: 0 auto;
@@ -6,7 +6,7 @@
     color: black;
 }
 
-.container .actions {
+.container-l .actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,13 +19,14 @@ button.primary {
     font-weight: 500;
     border: 0;
     border-radius: 5px;
-    background-color: rgb(10, 77, 157);
+    background-color: #0A4D9D;
     color: white;
 }
 
 
 button.primary[disabled] {
     background-color: rgb(128, 134, 140);
+    cursor: not-allowed;
 }
 
 button.danger {
@@ -40,19 +41,19 @@ button.danger {
 }
 
 @media (max-width: 1280px) {
-    .container {
+    .container-l {
         max-width: 960px;
     }
 }
 
 @media (max-width: 960px) {
-    .container {
+    .container-l {
         max-width: 720px;
     }
 }
 
 @media (max-width: 720px) {
-    .container {
+    .container-l {
         max-width: 100%;
     }
 }
