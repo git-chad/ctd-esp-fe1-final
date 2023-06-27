@@ -14,7 +14,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
   const favoritesState = useAppSelector((state) => state.favorites);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [hasAnimated, setHasAnimated] = useState(false);
+  // const [hasAnimated, setHasAnimated] = useState(false);
 
   const onClickFav = () => {
     dispatch(fetchToggleFavorite(character.id));
@@ -31,17 +31,17 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
 
   // console.log(character.name);
 
-  useEffect(() => {
-    const hasAnimatedBefore = localStorage.getItem("hasAnimated");
+  // useEffect(() => {
+  //   const hasAnimatedBefore = localStorage.getItem("hasAnimated");
 
-    if (!hasAnimatedBefore) {
-      setHasAnimated(true);
-      localStorage.setItem("hasAnimated", "true");
-    }
-  }, []);
+  //   if (!hasAnimatedBefore) {
+  //     setHasAnimated(true);
+  //     localStorage.setItem("hasAnimated", "true");
+  //   }
+  // }, []);
 
   return (
-    <Fade bottom when={!hasAnimated}>
+    <Fade bottom>
       <div className="character-card">
         <img src={character.img} alt={character.name} onClick={onClickCard} />
         <div className="character-card-body">
