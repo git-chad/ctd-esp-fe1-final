@@ -3,8 +3,8 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import FavButton from "../buttons/fav-button.component";
 import "./character-card.css";
 import { fetchToggleFavorite } from "../../store/favoritesReducer";
-import Fade from "react-reveal/Fade";
 import { useEffect, useState } from "react";
+import { motion } from 'framer-motion';
 
 interface CharacterCardProps {
   character: Character;
@@ -41,15 +41,15 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
   // }, []);
 
   return (
-    <Fade bottom>
-      <div className="character-card">
+    
+      <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="character-card">
         <img src={character.img} alt={character.name} onClick={onClickCard} />
         <div className="character-card-body">
           <span>{character.name}</span>
           <FavButton isFavorite={isFav} onClick={onClickFav} />
         </div>
-      </div>
-    </Fade>
+      </motion.div>
+    
   );
 };
 
