@@ -35,7 +35,12 @@ const Filter = () => {
         placeholder="Rick, Morty, Beth, Alien, ...etc"
         name="name"
       />
-      <button className="underline font-semibold italic w-[100px] self-center" onClick={handleResetFilter}>Clean filter</button>
+      <button
+        className="underline font-semibold italic w-[100px] self-center transition-colors hover:text-[#61b7f9]"
+        onClick={handleResetFilter}
+      >
+        Clean filter
+      </button>
     </div>
   );
 };

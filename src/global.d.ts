@@ -8,3 +8,9 @@ declare interface Character {
     episodes?: string[],
   }
 
+declare interface Episode {
+  id: number,
+  title: string,
+  date: string,
+  episode: string,
+}

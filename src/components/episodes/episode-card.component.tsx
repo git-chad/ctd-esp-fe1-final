@@ -13,13 +13,13 @@ interface episodeCardProps {
     episode: Episode;
 }
 
-const EpisodeCard = () => {
+const EpisodeCard = ({episode} : episodeCardProps) => {
 
     return <div className="episode-card">
-            <h4>Close Rick-counters of the Rick Kind</h4>
+            <h4>{episode.title}</h4>
             <div>
-                <span>S01E01</span>
-                <span>Launched: April 7, 2014</span>
+                <span>{episode.episode}</span>
+                <span>Streamed: {episode.date}</span>
             </div>
     </div>
 }

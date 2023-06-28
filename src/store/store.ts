@@ -1,6 +1,7 @@
 import { configureStore} from "@reduxjs/toolkit";
 import characterReducer from "./characterReducer";
 import favoritesReducer from "./favoritesReducer";
+import detailsReducer from "./detailsReducer";
 
 // import reducers 
 
@@ -10,6 +11,7 @@ const store = configureStore({
     // put reducers here
     characters: characterReducer,
     favorites: favoritesReducer,
+    details: detailsReducer
     
    }
 });

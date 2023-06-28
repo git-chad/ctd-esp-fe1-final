@@ -4,7 +4,7 @@ import { fetchCharData } from "./characterReducer";
 
 export interface FavoritesState {
   list: number[];
-  characters: Character[];
+  characters: Character[] | Array<Character>;
 }
 
 const initialState: FavoritesState = {

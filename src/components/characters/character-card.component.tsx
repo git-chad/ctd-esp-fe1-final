@@ -5,6 +5,7 @@ import "./character-card.css";
 import { fetchToggleFavorite } from "../../store/favoritesReducer";
 import { useEffect, useState } from "react";
 import { motion } from 'framer-motion';
+import { setDetails } from "../../store/detailsReducer";
 
 interface CharacterCardProps {
   character: Character;
@@ -21,8 +22,8 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
   };
 
   const onClickCard = () => {
+    dispatch(setDetails(character))
     navigate("/details");
-    console.log("opened on details tab");
   };
 
   const isFav =
