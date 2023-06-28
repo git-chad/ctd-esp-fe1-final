@@ -4,7 +4,7 @@ import CharacterGrid from "../components/characters/character-grid.component";
 import Pagination from "../components/pagination/pagination.component";
 import { useAppSelector, useAppDispatch } from "../store/hooks";
 import { fetchCharacters } from "../store/characterReducer";
-import { fetchResetFavorites } from "../store/favoritesReducer";
+import { fetchFavoriteCharacters, fetchResetFavorites } from "../store/favoritesReducer";
 import FavResetConfirmation from "../components/modals/FavResetConfirmation";
 
 const Homepage = () => {
@@ -27,12 +27,16 @@ const Homepage = () => {
   const cancelRemoveAllFavorites = () => {
     setShowAlert(false);
   };
+
+  const isButtonDisabled = useAppSelector((state) => state.favorites.list.length === 0);
+
   return (
     <div className="container-l">
       <div className="actions">
         <h3 className="text-2xl font-bold">Character Catalog</h3>
         <button
-          className="danger hover:bg-red-700 transition-colors"
+          className="danger hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={isButtonDisabled}  
           onClick={handleRemoveAllFavorites}
         >
           Remove all
@@ -42,7 +46,7 @@ const Homepage = () => {
       <Pagination />
       <CharacterGrid characters={characters} />
       <Pagination />
-      {showAlert && ( 
+      {showAlert && (
         <FavResetConfirmation
           onConfirm={confirmRemoveAllFavorites}
           onCancel={cancelRemoveAllFavorites}
