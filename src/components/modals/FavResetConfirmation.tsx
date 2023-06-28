@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { fetchResetFavorites } from "../../store/favoritesReducer";
 
 const FavResetConfirmation = ({onConfirm, onCancel}) => {

@@ -1,31 +1,41 @@
-import React, { useEffect } from 'react';
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import Homepage from "./pages/Home.page";
-import Favorites from "./pages/Favorites.page";
-import Details from "./pages/Details.page";
-import Navbar from "./components/layout/navbar.component";
-import { useAppDispatch, useAppSelector } from './store/hooks';
-import { fetchFavoriteCharacters, fetchFavorites } from './store/favoritesReducer';
+import Homepage from './pages/Home.page';
+import Favorites from './pages/Favorites.page';
+import Details from './pages/Details.page';
+import Navbar from './components/layout/navbar.component';
+import { useAppDispatch } from './store/hooks';
+import { fetchFavorites, fetchResetFavorites } from './store/favoritesReducer';
+import FavResetConfirmation from './components/modals/FavResetConfirmation';
 
 function App() {
   const dispatch = useAppDispatch();
-  const favorites = useAppSelector(state => state.favorites)
 
   useEffect(() => {
-    dispatch(fetchFavorites())
-  }, [])
-
-  useEffect(() => {
-    dispatch(fetchFavoriteCharacters())
-  }, [favorites.list])
+    dispatch(fetchFavorites());
+  }, [dispatch]);
 
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route
+          path="/"
+          element={
+            <Homepage
+              
+            />
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <Favorites
+              
+            />
+          }
+        />
         <Route path="/details" element={<Details />} />
       </Routes>
     </div>

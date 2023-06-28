@@ -44,7 +44,7 @@ const Favorites = () => {
     <div className="container-l">
       <div className="actions mb-5">
         <h1 className="text-2xl font-bold">Favorite Characters</h1>
-        {filteredCharacters.length > 0 && ( // Conditionally render the button only if there are favorite characters
+        {filteredCharacters.length > 0 && ( 
           <button
             className="danger hover:bg-red-700 transition-colors"
             onClick={handleRemoveAllFavorites}
@@ -53,7 +53,7 @@ const Favorites = () => {
           </button>
         )}
       </div>
-      {filteredCharacters.length > 0 ? ( // Conditionally render the character grid if there are favorite characters
+      {filteredCharacters.length > 0 ? ( 
         <CharacterGrid characters={filteredCharacters} />
       ) : (
         <>
@@ -70,7 +70,7 @@ const Favorites = () => {
         </>
       )}
 
-      {showAlert && ( // Conditionally render the modal only if showAlert is true
+      {showAlert && ( 
         <FavResetConfirmation
           onConfirm={confirmRemoveAllFavorites}
           onCancel={cancelRemoveAllFavorites}
