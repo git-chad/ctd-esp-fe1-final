@@ -17,12 +17,12 @@ const EpisodeCard = ({ episode }: episodeCardProps) => {
       <div
         className="bg-[#d0d0d0] p-3 rounded-md flex flex-col"
       >
-        <h4>{episode.title}</h4>
-        <div>
-          <span className="font-bold">{episode.episode}</span>
-          <span className="italic">
+        <h4 className="font-bold underline">{episode.title}</h4>
+        <div className="flex sm:flex-col justify-between">
+          <p className="font-bold">{episode.episode}</p>
+          <p className="italic">
             <b className="font-semibold">Streamed:</b> {episode.date}
-          </span>
+          </p>
         </div>
       </div>
     </div>

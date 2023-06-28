@@ -60,8 +60,8 @@ const DetailsPage = () => {
       <div className="details">
         <div className="details-header flex flex-col sm:flex-row justify-between">
           <img src={character.img} alt={character.name} />
-          <div className="details-header-text sm:ml-4 mt-4 sm:mt-0">
-            <p className="text-3xl font-bold">{character.name}</p>
+          <div className="details-header-text sm:ml-4 mt-4 sm:mt-0 mb-4">
+            <p className="text-3xl font-bold mb-4">{character.name}</p>
             <p className="text-xl">
               <b>Planet: </b>
               {character.planet}

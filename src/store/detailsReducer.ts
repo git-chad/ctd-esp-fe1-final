@@ -23,7 +23,7 @@ const initialState: DetailsState = {
 const mapEpisodes = (episodes: any) => {
   return episodes.map((episode: any) => ({
     id: episode.id,
-    title: episode.title,
+    title: episode.name,
     date: episode.air_date,
     episode: episode.episode,
   }));
