@@ -1,15 +1,7 @@
-.episode-card {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  background-color: #d0d0d0;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
+
 
 .episode-card h4{
   margin: 0;
-  margin-bottom: 10px;
 }
 
 .episode-card > span {

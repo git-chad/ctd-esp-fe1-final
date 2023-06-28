@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 interface DetailsState {
   character: Character;
   isLoading: boolean;
-  episodes: Array<Episode> | undefined;
+  episodes: Episode[];
 }
 
 const initialState: DetailsState = {
@@ -24,40 +24,39 @@ const mapEpisodes = (episodes: any) => {
   return episodes.map((episode: any) => ({
     id: episode.id,
     title: episode.title,
-    date: episode.date,
+    date: episode.air_date,
     episode: episode.episode,
   }));
 };
 
-const getEpisodesByArray = async (array: Array<number>) => {
-  let data = [];
+const getEpisodesByArray = async (array: number[]) => {
+  let data: Episode[] = [];
   if (array.length > 0) {
     const response = await fetch(
-      `https://rickandmortyapi.com/api/episode/${String(array)}`
+      `https://rickandmortyapi.com/api/episode/${array.join(",")}`
     ).then((response) => response.json());
-    if (response.length > 0) {
-      data = mapEpisodes(response);
-    } else {
-      data = mapEpisodes([response]);
-    }
+    data = mapEpisodes(Array.isArray(response) ? response : [response]);
   }
   return data;
 };
 
 export const fetchEpisodes = createAsyncThunk(
-  "favorites/fetchEpisodes",
-  async (_, { getState }) => {
+  "details/fetchEpisodes",
+  async (id: number, { getState }) => {
     const state = getState() as RootState;
-    const { character } = state.Details;
-    if (character.episodes === un) {
+    const { character } = state.details;
+
+    if (character.episodes === undefined) {
       return [];
     }
+
     const arrayEpisodes = character.episodes.map((episode) => {
       const arrayUrl = episode.split("/");
-      const id = arrayUrl[arrayUrl.length - 1];
-      return Number(id);
+      const episodeId = arrayUrl[arrayUrl.length - 1]; // Use a different variable name here
+      return Number(episodeId);
     });
-    const response = getEpisodesByArray(arrayEpisodes);
+
+    const response = await getEpisodesByArray(arrayEpisodes);
     return response;
   }
 );

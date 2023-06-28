@@ -20,9 +20,7 @@ const CharacterGrid = ({ characters }: CharacterGridProps) => {
       {characters.map((character) => {
         return (
           <>
-            <div className="min-w-[300px]">
-              <CharacterCard key={character.id} character={character} />
-            </div>
+              <CharacterCard key={character.id} character={character} />         
           </>
         );
       })}

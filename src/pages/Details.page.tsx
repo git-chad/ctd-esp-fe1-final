@@ -1,9 +1,11 @@
-import "./Details.css";
+
 import FavButton from "../components/buttons/fav-button.component";
 import EpisodeCard from "../components/episodes/episode-card.component";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { Link } from "react-router-dom";
 import { fetchToggleFavorite } from "../store/favoritesReducer";
+import { useEffect } from "react";
+import { fetchEpisodes } from "../store/detailsReducer";
 
 /**
  * Esta es la pagina de detalle. Aqui se puede mostrar la vista sobre el personaje seleccionado junto con la lista de episodios en los que aparece
@@ -28,34 +30,43 @@ const DetailsPage = () => {
     dispatch(fetchToggleFavorite(character.id));
   };
 
+  useEffect(() => {
+    if (character.id !== -1) {
+      dispatch(fetchEpisodes(character.id));
+    }
+  }, [dispatch, character.id]);
+
   if (character.id === -1) {
     return (
-      <div className="container">
-        <p className="text-xl italic font-bold opacity-50">
-          Select a character to see their details
-        </p>
-        <Link to="/">
-          <p className="text-md underline underline-offset-2 opacity-50 hover:text-[#076eed] transition-colors">
-            Head back to the homepage
+      <div className="container-l">
+        <h1 className="text-2xl font-bold mb-5">Character Details</h1>
+        <div className="text-black flex flex-col h-[70vh] items-center justify-center">
+          <p className="text-xl italic font-bold opacity-50">
+            Select a character to see their details
           </p>
-        </Link>
+          <Link to="/">
+            <p className="text-md underline underline-offset-2 opacity-50 hover:text-[#076eed] transition-colors">
+              Head back to the homepage
+            </p>
+          </Link>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="container text-black">
-      <h3>{character.name}</h3>
+    <div className="container-l">
+      <h1 className="text-2xl font-bold mb-5">Character Details</h1>
       <div className="details">
-        <div className="details-header">
+        <div className="details-header flex flex-col sm:flex-row justify-between">
           <img src={character.img} alt={character.name} />
-          <div className="details-header-text">
-            <p>{character.name}</p>
-            <p>
+          <div className="details-header-text sm:ml-4 mt-4 sm:mt-0">
+            <p className="text-3xl font-bold">{character.name}</p>
+            <p className="text-xl">
               <b>Planet: </b>
               {character.planet}
             </p>
-            <p>
+            <p className="text-xl">
               <b>Gender: </b>
               {character.gender}
             </p>
@@ -66,15 +77,17 @@ const DetailsPage = () => {
           />
         </div>
       </div>
-      <h4>Appears in:</h4>
-      <div className="episodes-grid">
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          episodes?.map((episode) => (
-            <EpisodeCard key={episode.id} episode={episode} />
-          ))
-        )}
+      <div className="container-l">
+        <h4 className="text-2xl font-bold mb-5">Appears in:</h4>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-5">
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            episodes?.map((episode) => (
+              <EpisodeCard key={episode.id} episode={episode} />
+            ))
+          )}
+        </div>
       </div>
     </div>
   );
