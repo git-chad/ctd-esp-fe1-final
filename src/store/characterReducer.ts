@@ -1,6 +1,9 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
+/**
+ * state and initial state of all characters.
+ */
 export interface CharactersState {
   isLoading: boolean;
   prev: string | null;
@@ -16,8 +19,13 @@ const initialState: CharactersState = {
   characters: [],
   filter: "",
 };
-// maps data for cards from api
-export const fetchCharData = (charDataToMap: any) => {
+
+/**
+ * maps character data and structurizes it.
+ * @param charDataToMap - character data to map.
+ * @returns an array of mapped characters.
+ */
+export const fetchCharData = (charDataToMap: any): Array<Character> => {
   return charDataToMap.map((character: any) => ({
     id: character.id,
     name: character.name,
@@ -28,8 +36,15 @@ export const fetchCharData = (charDataToMap: any) => {
     url: character.url,
   }));
 };
-// gets chars from current page (check api)
-const getCharactersPageDependent = async (url: string) => {
+
+/**
+ * fetches characters from the current page based on the URL.
+ * @param url - The url of the page.
+ * @returns The fetched characters data.
+ */
+const getCharactersPageDependent = async (
+  url: string
+): Promise<CharactersState> => {
   const response = await fetch(url).then((response) => response.json());
   const data: CharactersState = {
     isLoading: false,
@@ -39,19 +54,30 @@ const getCharactersPageDependent = async (url: string) => {
   };
   return data;
 };
-// filters chars on screen by name
-const getFilteredCharacters = async (filter: string) => {
+
+/**
+ * fetches filtered characters by their names.
+ * @param filter - the filter to apply.
+ * @returns the fetched filtered characters data.
+ */
+const getFilteredCharacters = async (
+  filter: string
+): Promise<CharactersState> => {
   return getCharactersPageDependent(
     `https://rickandmortyapi.com/api/character/?name=${filter}&page=1`
   );
 };
-// gets chars first page
-const getCharacters = async () => {
+
+/**
+ * fetches the first page of characters.
+ * @returns The fetched characters data for the first page.
+ */
+const getCharacters = async (): Promise<CharactersState> => {
   return getCharactersPageDependent(
     "https://rickandmortyapi.com/api/character?page=1"
   );
 };
-// fetch chars
+
 export const fetchCharacters = createAsyncThunk(
   "characters/fetchCharacters",
   async () => {
@@ -59,7 +85,7 @@ export const fetchCharacters = createAsyncThunk(
     return response;
   }
 );
-// fetch filtered chars by their names
+
 export const fetchFilteredCharacters = createAsyncThunk(
   "characters/fetchFilteredCharacters",
   async (filter: string) => {
@@ -67,7 +93,7 @@ export const fetchFilteredCharacters = createAsyncThunk(
     return response;
   }
 );
-// fetch previous char page
+
 export const fetchPreviousCharacters = createAsyncThunk(
   "characters/fetchPreviousCharacters",
   async (unused, { getState }) => {
@@ -81,7 +107,7 @@ export const fetchPreviousCharacters = createAsyncThunk(
     return response;
   }
 );
-// fetch next char page
+
 export const fetchNextCharacters = createAsyncThunk(
   "characters/fetchNextCharacters",
   async (unused, { getState }) => {
@@ -96,8 +122,9 @@ export const fetchNextCharacters = createAsyncThunk(
   }
 );
 
-// char slice
-
+/**
+ * characters slice.
+ */
 const charactersSlice = createSlice({
   name: "characters",
   initialState,
@@ -105,6 +132,7 @@ const charactersSlice = createSlice({
     setFilter(state, action: PayloadAction<string>) {
       state.filter = action.payload;
     },
+
     resetFilter(state) {
       state.filter = "";
     },
@@ -135,12 +163,12 @@ const charactersSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchPreviousCharacters.fulfilled, (state, action) => {
-        state.isLoading = false;      
+        state.isLoading = false;
         state.next = action.payload.next;
         state.prev = action.payload.prev;
         state.characters = action.payload.characters;
       })
-      
+
       .addCase(fetchFilteredCharacters.pending, (state) => {
         state.isLoading = true;
       })
@@ -152,12 +180,12 @@ const charactersSlice = createSlice({
       })
       .addCase(fetchFilteredCharacters.rejected, (state, action) => {
         state.isLoading = false;
-        state.next = null
-        state.prev = null
-        state.characters = []
-      })
+        state.next = null;
+        state.prev = null;
+        state.characters = [];
+      });
   },
 });
 
-export const {setFilter, resetFilter} = charactersSlice.actions
-export default charactersSlice.reducer
+export const { setFilter, resetFilter } = charactersSlice.actions;
+export default charactersSlice.reducer;

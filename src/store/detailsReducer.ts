@@ -1,5 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+/**
+ * state and initial state of details.
+ */
 interface DetailsState {
   character: Character;
   isLoading: boolean;
@@ -20,7 +23,12 @@ const initialState: DetailsState = {
   episodes: [],
 };
 
-const mapEpisodes = (episodes: any) => {
+/**
+ * maps the episode data received from the api.
+ * @param episodes - array of episode data.
+ * @returns the mapped array of episodes.
+ */
+const mapEpisodes = (episodes: any): Episode[] => {
   return episodes.map((episode: any) => ({
     id: episode.id,
     title: episode.name,
@@ -29,7 +37,12 @@ const mapEpisodes = (episodes: any) => {
   }));
 };
 
-const getEpisodesByArray = async (array: number[]) => {
+/**
+ * tetrieves the episodes by an array of ids.
+ * @param array - the array of episode ids.
+ * @returns the array of episodes.
+ */
+const getEpisodesByArray = async (array: number[]): Promise<Episode[]> => {
   let data: Episode[] = [];
   if (array.length > 0) {
     const response = await fetch(
@@ -52,7 +65,7 @@ export const fetchEpisodes = createAsyncThunk(
 
     const arrayEpisodes = character.episodes.map((episode) => {
       const arrayUrl = episode.split("/");
-      const episodeId = arrayUrl[arrayUrl.length - 1]; // Use a different variable name here
+      const episodeId = arrayUrl[arrayUrl.length - 1];
       return Number(episodeId);
     });
 
@@ -60,6 +73,10 @@ export const fetchEpisodes = createAsyncThunk(
     return response;
   }
 );
+
+/**
+ * details slice.
+ */
 
 const detailsSlice = createSlice({
   name: "details",
