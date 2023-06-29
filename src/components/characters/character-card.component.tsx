@@ -43,8 +43,8 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
 
   return (
     
-      <motion.div initial={{opacity:0, y:10}} animate={{opacity:1, y:0}} className="character-card">
-        <img src={character.img} alt={character.name} onClick={onClickCard} />
+      <motion.div initial={{opacity:0, y:10}} whileHover={{scale: 1.02}} animate={{opacity:1, y:0}} className="character-card">
+        <img className="cursor-pointer" src={character.img} alt={character.name} onClick={onClickCard} />
         <div className="character-card-body">
           <span>{character.name}</span>
           <FavButton isFavorite={isFav} onClick={onClickFav} />

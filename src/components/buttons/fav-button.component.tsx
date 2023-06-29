@@ -19,8 +19,8 @@ interface FavButtonProps {
 const FavButton = ({isFavorite, onClick}: FavButtonProps) => {
     const src = isFavorite ? filledStar : star;
 
-    return <div onClick={onClick} className="fav-button">
-        <img className="w-5 h-5 cursor-pointer" src={src} alt={"favorite"} />
+    return <div onClick={onClick} className="fav-button  hover:filter-drop-shadow-yellow">
+        <img className=" w-6 h-6 cursor-pointer" src={src} alt={"favorite"} />
     </div>
 }
 
