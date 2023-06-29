@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "^18.13.0",
     "@types/react": "^18.0.27",
@@ -16,6 +19,7 @@
     "react-reveal": "^1.2.2",
     "react-router-dom": "^6.8.1",
     "react-scripts": "^5.0.1",
+    "react-scroll": "^1.8.9",
     "redux-thunk": "^2.4.2",
     "tailwindcss-filters": "^3.0.0",
     "web-vitals": "^3.1.1"
